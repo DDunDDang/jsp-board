@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Properties;
 
 public class UserDAO {
 
@@ -13,10 +14,12 @@ public class UserDAO {
 
     public UserDAO() {
         try {
-            String dbURL = "jdbc:mysql://localhost:3306/bbs?serverTimezone=Asia/Seoul&useSSL=false&user=root";
-            String dbID = "root";
+            String dbURL = "jdbc:mysql://localhost:3306/bbs?useSSL=false";
+            Properties jdbcProperties = new Properties();
+            jdbcProperties.setProperty("user", "user");
+            jdbcProperties.setProperty("password", "12345678");
             Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(dbURL);
+            conn = DriverManager.getConnection(dbURL, jdbcProperties);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -49,6 +52,7 @@ public class UserDAO {
             pstmt.setString(3, user.getUserName());
             pstmt.setString(4, user.getUserGender());
             pstmt.setString(5, user.getUserEmail());
+            return pstmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
