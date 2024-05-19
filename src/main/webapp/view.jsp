@@ -105,7 +105,14 @@
                     </tr>
                     <tr>
                         <td>내용</td>
-                        <td colspan="2" style="min-height: 200px; text-align: left;"><%= board.getBoardContent().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "gt;").replaceAll("\n", "<br>") %></td>
+                        <td colspan="2" style="text-align: left;">
+                            <div style="min-height: 200px;">
+                                <%= board.getBoardContent().replaceAll(" ", "&nbsp;")
+                                        .replaceAll("<", "&lt;")
+                                        .replaceAll(">", "&gt;")
+                                        .replaceAll("\n", "<br>") %>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -114,11 +121,11 @@
                 if (userID != null && userID.equals(board.getUserID())) {
             %>
                 <a href="update.jsp?boardID=<%= boardID %>" class="btn btn-primary">수정</a>
-                <a href="deleteAction.jsp?boardID=<%= boardID %>" class="btn btn-primary">삭제</a>
+                <a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteAction.jsp?boardID=<%= boardID %>" class="btn btn-primary">삭제</a>
             <%
                 }
             %>
-            <input type="submit" class="btn btn-primary pull-right" value="글쓰기">
+            <a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
