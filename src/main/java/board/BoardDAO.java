@@ -129,4 +129,17 @@ public class BoardDAO {
         }
         return null;
     }
+
+    public int deleteBoard(int boardID, String userID) {
+        String SQL = "DELETE FROM board WHERE boardID = ? AND userID = ?";
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SQL);
+            pstmt.setInt(1, boardID);
+            pstmt.setString(2, userID);
+            return pstmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return -1;
+    }
 }
