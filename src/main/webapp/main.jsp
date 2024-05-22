@@ -11,6 +11,7 @@
 <head>
     <meta name="viewport" content="width=device-width", initial-scale="1">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/custom.css">
     <title>JSP 게시판</title>
 </head>
 <body>
@@ -68,7 +69,15 @@
             %>
         </div>
     </nav>
-
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                <h1>웹 사이트 소개</h1>
+                <p>이 웹사이트는 부트스트랩으로 만든 JSP 웹 사이트 입니다.</p>
+                <p><a class="btn btn-primary btn-pull" href="https://github.com/DDunDDang/jsp-board" role="button">자세히 알아보기</a></p>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
 </body>
